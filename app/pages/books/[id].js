@@ -11,13 +11,13 @@ const BookPage = () => {
     const { id } = router.query;
     const [book, setBook] = useState(null);
     const [rating, setRating] = useState(0);
-    const [shelf, setShelf] = useState('');
+    const [shelfStatus, setShelfStatus] = useState('');
 
     useEffect(() => {
         if (id) {
             const loadBook = async () => {
-                const book = await fetchBookById(id);
-                setBook(book);
+                const bookData = await fetchBookById(id);
+                setBook(bookData);
             };
             loadBook();
         }
@@ -46,16 +46,14 @@ const BookPage = () => {
         <div className="container mx-auto p-4">
             <BookDetail book={book} />;
             <div className='mt-4'>
-                <label htmlFor='rating'>Rating</label>
+                <label htmlFor='rating'>Rate book:</label>
                 <input
                     id='rating'
                     type='number'
                     value={rating}
                     onChange={(e) => setRating(Number(e.target.value))}
-                    min='1'
-                    max='5'
-                    onBlur={handleRatingChange}
-                    className='border border-gray-300 p-2 rounded'
+                    min="1"
+                    max="5"
                 />
                 <button onClick={handleRatingChange} className='ml-2 p-2 bg-blue-500 text-white rounded'>Rate</button>
             </div>

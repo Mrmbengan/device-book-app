@@ -5,14 +5,14 @@ import { registerUser } from '../utils/api';
 import SignUp from '../components/SignUp';
 
 const SignUpPage = () => {
-    const [user, setUser] = useState({ username: '', password: '' });
-    const [message, setMessage] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await registerUser(user);
-            setMessage('User registered successfully');
+            await registerUser({ username, password });
         } catch (error) {
             setMessage('Registration failed');
         }
