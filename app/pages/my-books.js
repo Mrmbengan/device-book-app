@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import MyBooks from '../components/MyBooks';
 import { fetchMyBooks } from '../utils/api'; // You need to implement this function

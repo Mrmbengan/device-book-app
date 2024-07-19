@@ -1,3 +1,6 @@
+"use client";
+
+
 import { useState, useEffect } from 'react';
 import { fetchBooks } from '../utils/api';
 import BookList from '../components/BookList';
@@ -15,9 +18,13 @@ const HomePage = () => {
     }, [sort]);
 
     return (
-        <div>
-            <h1>Books</h1>
-            <select onChange={(e) => setSort(e.target.value)} value={sort}>
+        <div className="container mx-auto">
+            <h1 className="text-2xl font-bold mb-4">Books</h1>
+            <select
+                onChange={(e) => setSort(e.target.value)}
+                value={sort}
+                className="mb-4 p-2 border border-gray-300 rounded"
+            >
                 <option value="name">Name</option>
                 <option value="most-read">Most Read</option>
                 <option value="currently-reading">Currently Reading</option>
